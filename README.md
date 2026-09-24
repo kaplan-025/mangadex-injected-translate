@@ -8,6 +8,9 @@
 
 Firefox (MV2) extension: translates manga pages in the MangaDex reader to Turkish with Google Image Translate. The translation is painted directly onto the page image; one click toggles between original and translation.
 
+![Translated reader](docs/screenshot-reader.png)
+![Extension popup](docs/screenshot-popup.png)
+
 ### How it works
 
 - **3-tab Google pool:** translations run through `translate.google.com/?op=images` automation (3 parallel, background tabs). The tabs are part of the engine; they close themselves when idle.
@@ -63,6 +66,9 @@ MIT — see `LICENSE`.
 ## Türkçe
 
 Firefox (MV2) eklentisi: MangaDex okuyucuda manga sayfalarını Google Görsel Çeviri ile Türkçeye çevirir. Çeviri doğrudan sayfadaki resmin üstüne basılır, orijinal↔çeviri geçişi tek tıkla yapılır.
+
+![Çevrilmiş okuyucu](docs/screenshot-reader.png)
+![Eklenti paneli](docs/screenshot-popup.png)
 
 ### Nasıl çalışır?
 
