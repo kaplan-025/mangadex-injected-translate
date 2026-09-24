@@ -1,0 +1,308 @@
+/* MangaDex Google Görsel Çeviri - Stilller */
+.mgc-wrapper {
+  position: relative !important;
+  display: inline-block !important;
+  line-height: 0;
+}
+
+.mgc-translate-btn {
+  position: absolute !important;
+  top: 8px !important;
+  left: 8px !important;
+  z-index: 9999 !important;
+  background: #4285F4 !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 20px !important;
+  padding: 6px 12px !important;
+  font-size: 12px !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  cursor: pointer !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  line-height: 1 !important;
+  transition: all 0.2s !important;
+  opacity: 0.45 !important;
+  padding: 4px 10px !important;
+  font-size: 11px !important;
+}
+
+.mgc-translate-btn:hover {
+  background: #3367D6 !important;
+  transform: scale(1.05) !important;
+  opacity: 1 !important;
+}
+
+.mgc-translate-btn:disabled {
+  background: #9AA0A6 !important;
+  cursor: wait !important;
+}
+
+.mgc-translate-btn.translated {
+  background: #34A853 !important;
+}
+
+.mgc-lens-btn {
+  position: absolute !important;
+  top: 8px !important;
+  right: 8px !important;
+  left: auto !important;
+  z-index: 9999 !important;
+  background: white !important;
+  color: #4285F4 !important;
+  border: 1px solid #4285F4 !important;
+  border-radius: 20px !important;
+  padding: 6px 10px !important;
+  font-size: 11px !important;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif !important;
+  cursor: pointer !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2) !important;
+  line-height: 1 !important;
+  opacity: 0.45 !important;
+}
+
+.mgc-lens-btn:hover {
+  opacity: 1 !important;
+  background: #E8F0FE !important;
+}
+
+.mgc-zoom-btn {
+  position: absolute !important;
+  top: 44px !important;
+  right: 8px !important;
+  left: auto !important;
+  z-index: 9999 !important;
+  background: white !important;
+  color: #4285F4 !important;
+  border: 1px solid #4285F4 !important;
+  border-radius: 20px !important;
+  padding: 6px 10px !important;
+  font-size: 11px !important;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif !important;
+  cursor: pointer !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2) !important;
+  line-height: 1 !important;
+  opacity: 0.45 !important;
+}
+
+.mgc-zoom-btn:hover {
+  opacity: 1 !important;
+  background: #E8F0FE !important;
+}
+
+.mgc-zoom-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 10003 !important;
+  background: rgba(0,0,0,0.92) !important;
+  overflow: auto !important;
+  cursor: zoom-out !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  padding: 24px !important;
+}
+
+.mgc-zoom-overlay img {
+  max-width: none !important;
+  width: auto !important;
+  height: auto !important;
+  box-shadow: 0 0 24px rgba(0,0,0,0.6) !important;
+}
+
+.mgc-canvas-overlay,
+.mgc-image-overlay {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: 9998 !important;
+  max-width: 100% !important;
+  height: auto !important;
+  box-shadow: 0 0 0 2px #4285F4 !important;
+  border-radius: 4px !important;
+}
+
+.mgc-toolbar {
+  position: fixed !important;
+  top: 70px !important;
+  right: 16px !important;
+  z-index: 10000 !important;
+  background: white !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25) !important;
+  padding: 12px !important;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif !important;
+  min-width: 240px !important;
+  border: 1px solid #DADCE0 !important;
+}
+
+.mgc-toolbar-header {
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  color: #202124 !important;
+  margin-bottom: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.mgc-toolbar-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin: 8px 0 !important;
+  font-size: 12px !important;
+  color: #5F6368 !important;
+}
+
+.mgc-toolbar select,
+.mgc-toolbar button {
+  font-size: 12px !important;
+  padding: 6px 8px !important;
+  border-radius: 6px !important;
+  border: 1px solid #DADCE0 !important;
+}
+
+.mgc-toolbar button {
+  background: #4285F4 !important;
+  color: white !important;
+  border: none !important;
+  cursor: pointer !important;
+  width: 100% !important;
+  margin-top: 8px !important;
+  font-weight: 600 !important;
+}
+
+.mgc-toolbar button:hover {
+  background: #3367D6 !important;
+}
+
+.mgc-toolbar button.secondary {
+  background: white !important;
+  color: #4285F4 !important;
+  border: 1px solid #4285F4 !important;
+}
+
+.mgc-progress {
+  position: fixed !important;
+  bottom: 24px !important;
+  left: 50% !important;
+  top: auto !important;
+  transform: translateX(-50%) !important;
+  background: rgba(32,33,36,0.92) !important;
+  color: white !important;
+  padding: 10px 16px !important;
+  border-radius: 20px !important;
+  font-size: 12px !important;
+  z-index: 10002 !important;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif !important;
+  text-align: center !important;
+  line-height: 1.4 !important;
+  pointer-events: none !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3) !important;
+  backdrop-filter: blur(4px) !important;
+  max-width: 90vw !important;
+  white-space: nowrap !important;
+}
+.mgc-progress.mgc-progress-stack-2 { bottom: 62px !important; }
+.mgc-progress.mgc-progress-stack-3 { bottom: 100px !important; }
+
+.mgc-badge {
+  position: absolute !important;
+  bottom: 8px !important;
+  right: 8px !important;
+  background: rgba(66,133,244,0.9) !important;
+  color: white !important;
+  font-size: 10px !important;
+  padding: 3px 6px !important;
+  border-radius: 4px !important;
+  z-index: 9999 !important;
+  font-family: sans-serif !important;
+}
+
+.mgc-toggle-original {
+  position: absolute !important;
+  bottom: 8px !important;
+  left: 8px !important;
+  z-index: 9999 !important;
+  background: rgba(0,0,0,0.7) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 16px !important;
+  padding: 4px 8px !important;
+  font-size: 10px !important;
+  cursor: pointer !important;
+}
+
+/* MangaDex reader özel - büyük resimler için */
+img.mgc-target {
+  outline: 2px dashed transparent !important;
+  transition: outline 0.2s !important;
+}
+img.mgc-target:hover {
+  outline-color: #4285F4 !important;
+}
+
+#mgc-hud {
+  position: fixed !important;
+  top: 12px !important;
+  right: 20px !important;
+  z-index: 10001 !important;
+  background: rgba(32,33,36,0.92) !important;
+  color: white !important;
+  padding: 8px 14px !important;
+  border-radius: 20px !important;
+  font-size: 12px !important;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif !important;
+  display: none;
+  align-items: center !important;
+  gap: 8px !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3) !important;
+  backdrop-filter: blur(4px) !important;
+  transition: background 0.3s !important;
+}
+#mgc-hud span { line-height: 1 !important; }
+
+/* Firefox Mobil (Fenix) iyileştirmeleri */
+@media (max-width: 768px) {
+  .mgc-toolbar {
+    top: 8px !important;
+    right: 8px !important;
+    left: 8px !important;
+    min-width: auto !important;
+    max-width: 96vw !important;
+    padding: 10px !important;
+    border-radius: 10px !important;
+  }
+  .mgc-toolbar-header {
+    font-size: 12px !important;
+  }
+  .mgc-toolbar select,
+  .mgc-toolbar button {
+    font-size: 14px !important;
+    padding: 8px 10px !important;
+    min-height: 36px !important;
+  }
+  .mgc-translate-btn {
+    padding: 8px 14px !important;
+    font-size: 13px !important;
+    border-radius: 22px !important;
+    top: 6px !important;
+    left: 6px !important;
+    min-height: 36px !important;
+  }
+  .mgc-lens-btn {
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+    left: 130px !important;
+    top: 6px !important;
+    min-height: 32px !important;
+  }
+  .mgc-progress {
+    font-size: 13px !important;
+    padding: 14px 18px !important;
+    max-width: 80vw !important;
+  }
+}

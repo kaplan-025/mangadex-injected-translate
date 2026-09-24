@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<style>
+  body { width: 300px; margin:0; font-family: -apple-system, sans-serif; background:#F8F9FA; }
+  .header { background:#4285F4; color:white; padding:14px; display:flex; align-items:center; gap:10px; }
+  .header h1 { font-size:14px; margin:0; }
+  .header small { opacity:0.9; font-size:11px; }
+  .logo { width:28px; height:28px; background:white; color:#4285F4; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; }
+  .body { padding:12px; }
+  .row { display:flex; justify-content:space-between; align-items:center; margin:10px 0; font-size:12px; }
+  .row label { color:#5F6368; }
+  select, button { font-size:12px; padding:6px 8px; border-radius:6px; border:1px solid #DADCE0; }
+  button { background:#4285F4; color:white; border:none; cursor:pointer; width:100%; margin-top:8px; font-weight:600; }
+  button.secondary { background:white; color:#4285F4; border:1px solid #4285F4; }
+  button:hover { opacity:0.9; }
+  .status { margin-top:10px; padding:8px; border-radius:6px; font-size:11px; display:none; }
+  .status.ok { background:#E6F4EA; color:#137333; display:block; }
+  .status.err { background:#FCE8E6; color:#A50E0E; display:block; }
+  .footer { text-align:center; font-size:10px; color:#80868B; padding:8px; }
+  a { color:#4285F4; text-decoration:none; }
+</style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">G</div>
+    <div>
+      <h1>MangaDex Görsel Çeviri</h1>
+      <small>Google ile otomatik çevir</small>
+    </div>
+  </div>
+  <div class="body">
+    <div class="row">
+      <label>Çeviri Modu</label>
+      <select id="translateMode">
+        <option value="google_direct">Google Görsel (op=images)</option>
+        <option value="tesseract">Yerel OCR</option>
+      </select>
+    </div>
+    <div style="font-size:10px;color:#1967D2;background:#E8F0FE;padding:6px;border-radius:6px;line-height:1.3" id="modeHint"></div>
+    <div class="row">
+      <label>Hedef Dil</label>
+      <select id="targetLang">
+        <option value="tr">Türkçe</option>
+        <option value="en">English</option>
+        <option value="az">Azərbaycanca</option>
+        <option value="de">Deutsch</option>
+        <option value="fr">Français</option>
+        <option value="es">Español</option>
+        <option value="ru">Русский</option>
+        <option value="ja">日本語</option>
+        <option value="ko">한국어</option>
+        <option value="zh">中文</option>
+        <option value="ar">العربية</option>
+      </select>
+    </div>
+    <div class="row">
+      <label>OCR Dili (manga dili)</label>
+      <select id="ocrLang">
+        <option value="eng">İngilizce</option>
+        <option value="jpn">Japonca</option>
+        <option value="eng+jpn">İng + Japonca</option>
+        <option value="kor">Korece</option>
+        <option value="chi_sim">Çince (Basit)</option>
+      </select>
+    </div>
+    <div class="row">
+      <label>Otomatik çevir (kaydırınca)</label>
+      <input type="checkbox" id="autoTranslate">
+    </div>
+    <button id="translateAll">📖 Bu Sayfayı Çevir</button>
+    <button id="clearAll" class="secondary">🧹 Temizle</button>
+    <div id="status" class="status"></div>
+  </div>
+  <div class="footer">
+    <a href="https://mangadex.org" target="_blank">mangadex.org</a> • Alt+T: çevir • Alt+C: temizle<br>
+    <a href="#" id="openOptions">Ayarlar</a>
+  </div>
+<script src="popup.js"></script>
+</body>
+</html>

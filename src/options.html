@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>MangaDex Görsel Çeviri - Ayarlar</title>
+<style>
+  body { font-family: -apple-system, sans-serif; max-width: 560px; margin: 24px auto; padding: 0 16px; color:#202124; }
+  h1 { font-size: 18px; display:flex; align-items:center; gap:10px; }
+  .logo { width:32px; height:32px; background:#4285F4; color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; }
+  .card { background:white; border:1px solid #DADCE0; border-radius:12px; padding:16px; margin:16px 0; box-shadow: 0 1px 6px rgba(0,0,0,0.08); }
+  .row { display:flex; justify-content:space-between; align-items:center; margin:12px 0; }
+  label { font-size:13px; color:#5F6368; }
+  select { padding:6px 8px; border-radius:6px; border:1px solid #DADCE0; min-width:160px; }
+  .hint { font-size:11px; color:#80868B; line-height:1.4; margin-top:4px; }
+  button { background:#4285F4; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer; font-weight:600; }
+  .success { background:#E6F4EA; color:#137333; padding:8px; border-radius:6px; font-size:12px; display:none; margin-top:10px; }
+  code { background:#F1F3F4; padding:2px 4px; border-radius:4px; font-size:11px; }
+</style>
+</head>
+<body>
+  <h1><span class="logo">G</span> MangaDex Görsel Çeviri - Ayarlar</h1>
+  <div class="card">
+    <h3 style="margin:0 0 8px">Çeviri Ayarları <span style="font-size:11px;color:#1967D2;background:#E8F0FE;padding:2px 6px;border-radius:10px">v1.1 • Mobil uyumlu</span></h3>
+    <div class="row">
+      <label for="translateMode">Çeviri Modu</label>
+      <select id="translateMode">
+        <option value="google_direct">Google Görsel (op=images) — önerilen</option>
+        <option value="tesseract">Yerel OCR (Tesseract.js)</option>
+      </select>
+    </div>
+    <div class="hint" id="modeHint"></div>
+    <div class="row">
+      <label for="targetLang">Hedef Dil (çerilecek dil)</label>
+      <select id="targetLang">
+        <option value="tr">Türkçe</option>
+        <option value="en">English</option>
+        <option value="az">Azərbaycanca</option>
+        <option value="de">Deutsch</option>
+        <option value="fr">Français</option>
+        <option value="es">Español</option>
+        <option value="ru">Русский</option>
+        <option value="ar">العربية</option>
+        <option value="ja">日本語</option>
+        <option value="ko">한국어</option>
+        <option value="zh">中文</option>
+      </select>
+    </div>
+    <div class="hint">Manga İngilizce/Japonca ise Türkçeyi seçmen önerilir.</div>
+
+    <div class="row">
+      <label for="sourceLang">Kaynak Dil</label>
+      <select id="sourceLang">
+        <option value="auto">Otomatik algıla</option>
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+        <option value="ko">한국어</option>
+        <option value="zh">中文</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <label for="ocrLang">OCR Dili (görseldeki metin dili)</label>
+      <select id="ocrLang">
+        <option value="eng">İngilizce (eng)</option>
+        <option value="jpn">Japonca (jpn)</option>
+        <option value="eng+jpn">İngilizce + Japonca</option>
+        <option value="kor">Korece (kor)</option>
+        <option value="chi_sim">Çince Basit</option>
+        <option value="chi_tra">Çince Geleneksel</option>
+      </select>
+    </div>
+    <div class="hint">Japonca manga okuyorsan <code>jpn</code> veya <code>eng+jpn</code> seç. İngilizce manga için <code>eng</code> yeterli ve daha hızlı.</div>
+
+    <div class="row">
+      <label><input type="checkbox" id="autoTranslate"> Sayfa kaydırınca otomatik çevir</label>
+      <span></span>
+    </div>
+    <div class="hint">Açıksa her yeni manga sayfası göründüğünde otomatik çeviri başlatır (Google modunda sekme açar).</div>
+
+    <div class="row">
+      <label><input type="checkbox" id="showLensButton"> "Lens'te Aç" butonunu göster</label>
+      <span></span>
+    </div>
+    <div class="hint">Google Lens yedek yöntemi: Görseli orijinal Google Görsel Çeviri arayüzünde açar.</div>
+
+    <div class="row">
+      <label><input type="checkbox" id="keepTranslateTab"> Google sekmesini açık tut (debug / mobilde izlemek için)</label>
+      <span></span>
+    </div>
+    <div class="hint">Kapalıysa çeviri sonrası Google sekmesi otomatik kapanır. Mobilde açık tutmak işi görmeyi kolaylaştırabilir.</div>
+
+    <button id="save">Kaydet</button>
+    <div id="ok" class="success">✓ Kaydedildi</div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin:0 0 8px">Nasıl Çalışır?</h3>
+    <p style="font-size:12px;line-height:1.5;color:#5F6368">
+      <b>Google Görsel modu (önerilen, v1.1):</b><br>
+      Manga görseli <code>jpeg/png/webp</code> formatında hazırlanır (gerekirse küçültülür) → arka planda görünmez bir sekmede <code>https://translate.google.com.tr/?op=images</code> açılır → görsel otomatik yüklenir → Google'ın kendi Görsel Çeviri motoru çevirir → çevrilmiş görsel (blob) yakalanıp MangaDex sayfasındaki orijinalin üzerine bindirilir.<br>
+      Bu yöntem Tesseract kullanmaz, en doğru sonuç verir ve Japonca/Korece dahil tüm dilleri destekler. İlk çeviride ek sekme 3-8 sn açık kalır.<br><br>
+      <b>Yerel OCR modu (fallback):</b><br>
+      1) Görsel indirilir → <code>Tesseract.js</code> ile cihazda OCR<br>
+      2) Her blok <code>translate.googleapis.com</code> ile çevrilir<br>
+      3) <code>Canvas</code> üzerine yazılır.<br>
+      Tesseract %0'da takılırsa internet/lisans sorunu vardır — Google Görsel moduna geçin.<br><br>
+      <b>Mobil:</b> Firefox Android (Fenix) uyumlu — aynı <code>manifest.json</code> ile kurulur, dokunma dostu butonlar.<br>
+      <b>Kısayollar:</b> <code>Alt+T</code> (mobilde yok) tüm sayfayı çevir, toolbar'daki <b>Tüm Sayfayı Çevir</b> kullan.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3 style="margin:0 0 8px">Kurulum</h3>
+    <p style="font-size:12px;line-height:1.5;color:#5F6368">
+      Firefox'ta <code>about:debugging#/runtime/this-firefox</code> → "Geçici Eklenti Yükle" → bu klasördeki <code>manifest.json</code>'u seç.<br>
+      Kalıcı kurulum için <code>web-ext build</code> ile <code>.xpi</code> oluşturup Firefox Add-ons'a yükle veya <code>about:addons</code> → dişli → "Dosyadan Eklenti Kur".
+    </p>
+  </div>
+
+<script src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+{
+  "manifest_version": 2,
+  "name": "MangaDex Injected Translate (v2)",
+  "version": "2.8.52",
+  "description": "Google havuz + pencere kuyruk: görünen sayfa önce, chapter atlamada anlık devam.",
+  "author": "Muse Spark",
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png",
+    "128": "icons/icon-128.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "mangadex-google-ceviri@opencode.local",
+      "strict_min_version": "79.0"
+    }
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "tabs",
+    "webRequest",
+    "webRequestBlocking",
+    "*://*.mangadex.org/*",
+    "*://*.mangadx.org/*",
+    "*://uploads.mangadx.org/*",
+    "*://uploads.mangadex.org/*",
+    "*://*.mangadx.network/*",
+    "*://*.mangadex.network/*",
+    "*://translate.googleapis.com/*",
+    "*://translate.google.com/*",
+    "*://*.translate.google.com/*",
+    "*://translate.google.com.tr/*",
+    "*://*.gstatic.com/*",
+    "*://lens.google.com/*",
+    "*://cdn.jsdelivr.net/*",
+    "*://tessdata.projectnaptha.com/*",
+    "http://127.0.0.1:8765/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.mangadex.org/*"
+      ],
+      "js": [
+        "src/content.js"
+      ],
+      "css": [
+        "src/content.css"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false
+    },
+    {
+      "matches": [
+        "*://translate.google.com/*",
+        "*://translate.google.com.tr/*"
+      ],
+      "js": [
+        "src/translate_google.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "background": {
+    "scripts": [
+      "src/vendor-tesseract.min.js",
+      "src/background.js"
+    ],
+    "persistent": true
+  },
+  "browser_action": {
+    "default_title": "MangaDex Çeviri",
+    "default_popup": "src/popup.html",
+    "default_icon": {
+      "48": "icons/icon-48.png",
+      "96": "icons/icon-96.png"
+    }
+  },
+  "options_ui": {
+    "page": "src/options.html",
+    "browser_style": true
+  },
+  "web_accessible_resources": [
+    "icons/*"
+  ],
+  "content_security_policy": "script-src 'self' https://cdn.jsdelivr.net 'wasm-unsafe-eval'; object-src 'self'; worker-src 'self' https://cdn.jsdelivr.net blob:;"
+}

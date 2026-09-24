@@ -1,0 +1,14 @@
+# derleme artığı
+*.xpi
+# bayat kaynak kopyası
+src_orig/
+# python artıkları
+__pycache__/
+*.pyc
+# test logları
+/tmp/
+*.log
+# editör/OS
+.vscode/
+.idea/
+.DS_Store
